@@ -736,6 +736,51 @@ struct Trie
 
 void solve()
 {
+    vi freq(26);
+
+    string s;
+    cin >> s;
+
+    for (auto x : s)
+    {
+        freq[x - 'A']++;
+    }
+
+    deque<char> dq;
+    int cnt = 0;
+
+    for (int i = 0; i < 26; i++)
+    {
+        if (freq[i] % 2)
+        {
+            if (cnt == 1)
+            {
+                cout << "NO SOLUTION";
+                return;
+            }
+            cnt++;
+            dq.resize(freq[i], (char)('A' + i));
+        }
+    }
+
+    for (int i = 0; i < 26; i++)
+    {
+        if (freq[i] % 2 == 0)
+        {
+            int x = freq[i] / 2;
+
+            for (int j = 0; j < x; j++)
+            {
+                dq.push_back((char)('A' + i));
+                dq.push_front((char)('A' + i));
+            }
+        }
+    }
+
+    for (auto x : dq)
+    {
+        cout << x;
+    }
 }
 
 int32_t main()

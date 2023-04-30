@@ -736,6 +736,26 @@ struct Trie
 
 void solve()
 {
+    int x, y;
+    cin >> x >> y;
+
+    if ((x + y) % 3 == 0)
+    {
+        int dif = abs(x - y);
+
+        if (dif <= min(x, y))
+        {
+            cout << "YES\n";
+        }
+        else
+        {
+            cout << "NO\n";
+        }
+    }
+    else
+    {
+        cout << "NO\n";
+    }
 }
 
 int32_t main()
@@ -754,7 +774,7 @@ int32_t main()
     // factorial();
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--)
         solve();
 
